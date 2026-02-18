@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HAVARD SCHOOL - CBC Academic Report</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+body{font-family:Arial;margin:20px;background:#f4f8ff;}
+.header{text-align:center;color:#0a3d91;}
+.logo{width:250px;}
+.motto{font-style:italic;color:#444;}
+input, select{border:none;border-bottom:1px solid #000;padding:3px;}
+.section-title{margin-top:30px;font-weight:bold;font-size:18px;color:#0a3d91;}
+table{width:100%;border-collapse:collapse;margin-top:10px;background:white;}
+th{background:#0a3d91;color:white;padding:8px;}
+td{border:1px solid #ccc;padding:6px;text-align:center;}
+.marks{width:60px;}
+button{background:#0a3d91;color:white;border:none;padding:6px 12px;cursor:pointer;margin:3px 0;}
+button:hover{background:#062866;}
+.footer{margin-top:40px;display:flex;justify-content:space-between;}
+.signature{width:200px;border-top:1px solid black;text-align:center;padding-top:5px;margin-top:40px;}
+</style>
+</head>
+<body>
+
+<div class="header">
+<img src="havard.png" class="logo"><br>
+<h2>HAVARD SCHOOL</h2>
+<div class="motto">Strive for Change</div><br>
+Term: <input id="term">
+Year: <input id="year">
+</div>
+
+<br>
+Student Name: <input id="name">
+Admission No: <input id="adm">
+Class: 
+<select id="class">
+<option value="PP1">PP1</option>
+<option value="PP2">PP2</option>
+<option value="Grade1">Grade 1</option>
+<option value="Grade2">Grade 2</option>
+<option value="Grade3">Grade 3</option>
+<option value="Grade4">Grade 4</option>
+<option value="Grade5">Grade 5</option>
+<option value="Grade6">Grade 6</option>
+<option value="Grade7">Grade 7</option>
+<option value="Grade8">Grade 8</option>
+<option value="Grade9">Grade 9</option>
+</select>
+
+<!-- PP1 – PP2 CBC Subjects -->
+<div class="section-title">PP1 – PP2 Subjects</div>
+<table>
+<tr><th>Subject</th><th>Marks</th></tr>
+<tbody id="pp">
+<tr><td>Language Activities</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+<tr><td>Mathematical Activities</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+<tr><td>Environmental Activities</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+<tr><td>Psychomotor & Creative Activities</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+<tr><td>Religious Education Activities</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+</tbody>
+</table>
+
+<!-- Grade 1 – 3 Subjects -->
+<div class="section-title">Grade 1 – 3 Subjects</div>
+<table>
+<tr><th>Subject</th><th>Marks</th></tr>
+<tbody id="g13">
+<tr><td>English</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+<tr><td>Kiswahili</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+<tr><td>Mathematics</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+<tr><td>Environmental Activities</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+<tr><td>Religious Education (CRE/IRE/HRE)</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+<tr><td>Creative Arts</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+</tbody>
+</table>
+
+<!-- Grade 4 – 6 Subjects -->
+<div class="section-title">Grade 4 – 6 Subjects</div>
+<table>
+<tr><th>Subject</th><th>Marks</th></tr>
+<tbody id="g46">
+<tr><td>English</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+<tr><td>Kiswahili</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+<tr><td>Mathematics</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+<tr><td>Science & Technology</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+<tr><td>Social Studies</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+<tr><td>Religious Education (CRE/IRE/HRE)</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+<tr><td>Agriculture</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+<tr><td>Creative Arts & Sports</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+</tbody>
+</table>
+
+<!-- Grade 7 – 9 Subjects -->
+<div class="section-title">Grade 7 – 9 Subjects</div>
+<table>
+<tr><th>Subject</th><th>Marks</th></tr>
+<tbody id="g79">
+<tr><td>English</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+<tr><td>Kiswahili / Kenya Sign Language</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+<tr><td>Mathematics</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+<tr><td>Integrated Science</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+<tr><td>Social Studies</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+<tr><td>Pre-Technical Studies</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+<tr><td>Religious Education (CRE/IRE/HRE)</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+<tr><td>Creative Arts & Sports</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+<tr><td>Optional Subjects (Agriculture / Computer / Visual / Performing Arts)</td><td><input type="number" min="0" max="100" class="marks" oninput="calculate()"></td></tr>
+</tbody>
+</table>
+
+<br>
+Total Marks: <span id="total">0</span><br>
+Level / Grade: <span id="meangrade">-</span>
+
+<div class="footer">
+<div class="signature">Class Teacher Signature</div>
+<div>
+<strong>Fees Balance:</strong><br>
+<input type="number" id="fees">
+</div>
+</div>
+
+<br><br>
+<button onclick="saveStudent()">SAVE STUDENT</button>
+<button onclick="loadAllDatabases()">LOAD ALL CLASS DATABASES</button>
+
+<div class="section-title">Class Databases</div>
+<div id="classDBs"></div>
+
+<script>
+/// Map total marks to Level/Grade
+function getTotalLevel(total,className){
+  if(["PP1","PP2","Grade1","Grade2","Grade3","Grade4","Grade5","Grade6"].includes(className)){
+    // PP1 to Grade 6 uses Levels
+    if(total>=600) return "E.E";
+    if(total>=500) return "M.E";
+    if(total>=400) return "A.E";
+    if(total>=300) return "B.E";
+    return "P";
+  } else {
+    // Grade 7 to 9 uses Grades
+    if(total>=600) return "A";
+    if(total>=500) return "B";
+    if(total>=400) return "C";
+    if(total>=300) return "D";
+    return "E";
+  }
+}
+
+// Per-subject grade/level depending on class
+function gradeSystem(m,className){
+  if(["PP1","PP2","Grade1","Grade2","Grade3","Grade4","Grade5","Grade6"].includes(className)){
+    // Levels for PP1 to Grade 6
+    if(m>=80) return ["E.E","E.E"];
+    if(m>=70) return ["M.E","M.E"];
+    if(m>=60) return ["A.E","A.E"];
+    if(m>=50) return ["B.E","B.E"];
+    if(m>=40) return ["P","P"];
+    return ["P","P"];
+  } else {
+    // Grades for Grade 7 to 9
+    if(m>=80) return ["A","A"];
+    if(m>=70) return ["B+","B+"];
+    if(m>=60) return ["B","B"];
+    if(m>=50) return ["C+","C+"];
+    if(m>=40) return ["C","C"];
+    if(m>=30) return ["D","D"];
+    return ["E","E"];
+  }
+}
+
+
+// Calculate total & Level / Grade
+function calculate(){
+  let total=0;
+  document.querySelectorAll(".marks").forEach(input=>{
+    total+=parseInt(input.value)||0;
+  });
+  document.getElementById("total").innerText=total;
+  let cls=document.getElementById("class").value;
+  document.getElementById("meangrade").innerText=getTotalLevel(total,cls);
+}
+
+// Save student
+function saveStudent(){
+  let className=document.getElementById("class").value;
+  let key=className+"_students";
+  let student={name:name.value,adm:adm.value,class:className,term:term.value,year:year.value,fees:fees.value,subjects:{},total:0,level:getTotalLevel(0,className),outof:document.querySelectorAll(".marks").length*100};
+  document.querySelectorAll(".marks").forEach(input=>{
+    let sub=input.parentElement.parentElement.children[0].innerText;
+    let m=parseInt(input.value)||0;
+    let g=gradeSystem(m);
+    student.subjects[sub]={marks:m,grade:g[0],level:g[1]};
+    student.total+=m;
+  });
+  student.level=getTotalLevel(student.total,className);
+  let db=JSON.parse(localStorage.getItem(key))||[];
+  db.push(student);
+  db.sort((a,b)=>b.total-a.total);
+  db.forEach((s,i)=>s.position=(i+1)+"/"+db.length);
+  localStorage.setItem(key,JSON.stringify(db));
+  alert("Student Saved & Ranked in "+className);
+  loadAllDatabases();
+}
+
+// Load all class databases
+function loadAllDatabases(){
+  const classes = ["PP1","PP2","Grade1","Grade2","Grade3","Grade4","Grade5","Grade6","Grade7","Grade8","Grade9"];
+  let classDBsDiv=document.getElementById("classDBs");
+  classDBsDiv.innerHTML="";
+  classes.forEach(cls=>{
+    let db = JSON.parse(localStorage.getItem(cls+"_students")) || [];
+    if(db.length===0){classDBsDiv.innerHTML+=`<h3>${cls} Database (No Students Yet)</h3><br>`;return;}
+    const firstStudent = db[0];
+    const subjectHeaders = Object.keys(firstStudent.subjects);
+    let tableHTML = `<h3>${cls} Database</h3>
+      <table>
+      <tr><th>Name</th>`;
+    subjectHeaders.forEach(sub => tableHTML += `<th>${sub} (Marks)</th><th>${sub} (Grade/Level)</th>`);
+    tableHTML += `<th>Total</th><th>Level/Grade</th><th>Position</th><th>Download PDF</th></tr><tbody>`;
+    db.forEach((s,i)=>{
+      tableHTML+=`<tr><td>${s.name}</td>`;
+      subjectHeaders.forEach(sub=>{
+        let d=s.subjects[sub];
+        tableHTML+=`<td>${d.marks}</td><td>${d.grade}/${d.level}</td>`;
+      });
+      tableHTML+=`<td>${s.total}</td><td>${s.level}</td><td>${s.position}</td>
+        <td><button onclick="downloadPDF('${cls}_students',${i})">Download</button></td>
+      </tr>`;
+    });
+    tableHTML+="</tbody></table>";
+    classDBsDiv.innerHTML+=tableHTML;
+    classDBsDiv.innerHTML+=`<button onclick="downloadClassPDFSpecific('${cls}')">Download ${cls} Full Database PDF</button><br><br>`;
+  });
+}
+
+// Individual student PDF
+function downloadPDF(key,index){
+  const db = JSON.parse(localStorage.getItem(key))||[];
+  const s = db[index];
+  const doc = new jsPDF();
+  let y = 10;
+  const img = new Image(); img.src = 'havard.png';
+  img.onload = function(){
+    doc.addImage(img,'PNG',10,y,30,30);
+    doc.setFontSize(16); doc.text("HAVARD SCHOOL",80,y+10);
+    doc.setFontSize(12); doc.text("Strive for Change",80,y+16);
+    y+=35; doc.setFontSize(12);
+    doc.text(`Name: ${s.name}`,10,y); doc.text(`Adm No: ${s.adm}`,10,y+6);
+    doc.text(`Class: ${s.class}`,10,y+12); doc.text(`Term: ${s.term}`,10,y+18);
+    doc.text(`Year: ${s.year}`,10,y+24); y+=30;
+    doc.setFontSize(11); doc.setFillColor(10,61,145); doc.setTextColor(255,255,255);
+    doc.rect(10,y,190,8,'F'); doc.text("Subject",12,y+6); doc.text("Marks",90,y+6); doc.text("Grade/Level",140,y+6); y+=8;
+    doc.setTextColor(0,0,0);
+    for(let sub in s.subjects){
+      let d = s.subjects[sub];
+      doc.text(sub,12,y+6); doc.text(String(d.marks),90,y+6); doc.text(`${d.grade} / ${d.level}`,140,y+6);
+      doc.rect(10,y,190,8); y+=8;
+    }
+    y+=4;
+    doc.text(`Total Marks: ${s.total} / ${s.outof}`,10,y+6);
+    doc.text(`Level / Grade: ${s.level}`,10,y+12);
+    doc.text(`Position: ${s.position}`,10,y+18);
+    doc.text(`Fees Balance: ${s.fees}`,10,y+24);
+    doc.text("Class Teacher Signature:",140,y+24); doc.line(140,y+28,190,y+28);
+    doc.save(`${s.name}.pdf`);
+  }
+}
+
+// Full class PDF
+function downloadClassPDFSpecific(className){
+  let key=className+"_students";
+  let db=JSON.parse(localStorage.getItem(key))||[];
+  if(db.length===0){ alert("No students found in "+className); return; }
+  const doc=new jsPDF(); const img=new Image(); img.src='havard.png';
+  img.onload=function(){
+    db.forEach((s,idx)=>{
+      if(idx>0) doc.addPage();
+      let y=10;
+      doc.addImage(img,'PNG',10,y,30,30);
+      doc.setFontSize(16); doc.text("HAVARD SCHOOL",80,y+10);
+      doc.setFontSize(12); doc.text("Strive for Change",80,y+16); y+=35;
+      doc.text(`Name: ${s.name}`,10,y); doc.text(`Adm No: ${s.adm}`,10,y+6);
+      doc.text(`Class: ${s.class}`,10,y+12); doc.text(`Term: ${s.term}`,10,y+18);
+      doc.text(`Year: ${s.year}`,10,y+24); y+=30;
+      doc.setFontSize(11); doc.setFillColor(10,61,145); doc.setTextColor(255,255,255);
+      doc.rect(10,y,190,8,'F'); doc.text("Subject",12,y+6); doc.text("Marks",90,y+6); doc.text("Grade/Level",140,y+6); y+=8;
+      doc.setTextColor(0,0,0);
+      for(let sub in s.subjects){
+        let d = s.subjects[sub];
+        doc.text(sub,12,y+6); doc.text(String(d.marks),90,y+6); doc.text(`${d.grade} / ${d.level}`,140,y+6);
+        doc.rect(10,y,190,8); y+=8;
+      }
+      y+=4;
+      doc.text(`Total Marks: ${s.total} / ${s.outof}`,10,y+6);
+      doc.text(`Level / Grade: ${s.level}`,10,y+12);
+      doc.text(`Position: ${s.position}`,10,y+18);
+      doc.text(`Fees Balance: ${s.fees}`,10,y+24);
+      doc.text("Class Teacher Signature:",140,y+24); doc.line(140,y+28,190,y+28);
+    });
+    doc.save(className+"_Database.pdf");
+  }
+}
+
+window.onload=loadAllDatabases;
+</script>
+
+</body>
+</html>
